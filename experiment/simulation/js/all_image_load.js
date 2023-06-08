@@ -1,7 +1,7 @@
 var tank_img = new Image();
 tank_img.src = "./images/tank1.webp";
 var pump_img = new Image();
-pump_img.src = "./images/new_images/pump.png";
+pump_img.src = "./images/new_images/Pump.png";
 var test_img = new Image();
 test_img.src = "./images/test1.webp";
 var pipe_h_img = new Image();
@@ -13,7 +13,7 @@ pipe_v_img.src = "./images/Pipe_02.webp";
 var heater_img = new Image();
 heater_img.src = "./images/newheater.webp";
 var temp_con_img = new Image();
-temp_con_img.src = "./images/temp_con.webp";
+temp_con_img.src = "./images/Temp_controller.webp";
 var temp_cold_in_img = new Image();
 temp_cold_in_img.src = "./images/new_images/Temp_indicator_01.png";
 var temp_cold_out_img = new Image();
@@ -85,7 +85,7 @@ flow_three.src = "./images/flow_three.png";
 var flow_four = new Image();
 flow_four.src = "./images/flow_four.png";
 var nf = new Image();
-nf.src = "./images/no_flow.gif";
+nf.src = "./images/no_flow.png";
 var lf = new Image();
 lf.src = "./images/laminar_flow.gif";
 //activity6

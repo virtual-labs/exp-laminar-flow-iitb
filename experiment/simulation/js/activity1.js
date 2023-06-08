@@ -128,7 +128,7 @@ function a1_draw_all_components() {
     var sq = new Chemistry.Custome_image(pipe_h_img, new Chemistry.Point(280, 800), 450, 80.775, canvas);
     sq.name = "Hpipe";
     scene.add(sq);
-    var sq = new Chemistry.Custome_image(pipe_v_img, new Chemistry.Point(150, 220), 130, 314, canvas);
+    var sq = new Chemistry.Custome_image(pipe_v_img, new Chemistry.Point(150, 220), 100, 314, canvas);
     sq.name = "Vpipe";
     scene.add(sq);
     var sq = new Chemistry.Custome_image(glass_img, new Chemistry.Point(230, 580), 100, 302.8, canvas);

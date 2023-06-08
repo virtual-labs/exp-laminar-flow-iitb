@@ -147,9 +147,11 @@ function a7_calculate_all(time, tci, tco, ti, to) {
     let mue = nue / area_of_inner_tube;
     res.push(mue);
     let m = nue * rhoh;
-    res.push(parseFloat(m.toFixed(3)));
+    res.push(m);
+    console.log(m, nue, rhoh);
     let q = m * cph * (tci - tco);
     res.push(q);
+    console.log(q);
     let lmtd = ((tci - ti) - (tco - to)) / (Math.log((tci - ti) / (tco - to)));
     res.push(lmtd);
     let u = q / (heat_transfer_area * lmtd);
@@ -161,17 +163,20 @@ function a7_calculate_all(time, tci, tco, ti, to) {
 function a7_calculate_for_table_2() {
     let res = [];
     let muc = (selected_flow_rate / 3600000) / annulus_area; // velocity of cold fluid
-    res.push(parseFloat(muc.toFixed(3)));
+    res.push(muc);
     let prc = cpc * muec / kc; // prandtl number
-    res.push(parseFloat(prc.toFixed(2)));
+    res.push(prc);
+    console.log(cpc, muec, kc, prc);
     let rec = (equivalent_diameter * muc * rhoc) / muec; // reynolds number
-    res.push(parseFloat(rec.toFixed(2)));
-    let nuc = (0.023 * (Math.pow(rec, (0.8))) * (Math.pow(prc, (0.4))) * Math.pow((selected_outside_dia / selected_shell_inside_dia), (0.45)));
-    res.push(parseFloat(nuc.toFixed(3)));
-    let hoc = nuc * kc / equivalent_diameter;
-    res.push(parseFloat(hoc.toFixed(3)));
-    let hoic = hoc * selected_shell_inside_dia / selected_dia;
-    res.push(parseFloat(hoic.toFixed(3)));
+    res.push(rec);
+    let nuc = (0.023 * (Math.pow(rec, (0.8))) * (Math.pow(prc, (0.4))) * Math.pow((selected_shell_inside_dia / selected_outside_dia), (0.45)));
+    // console.log("rec: " + rec + ", prc: " + prc + ", selected_outside_diaz: " + selected_outside_dia + ", selected_shell_inside_dia: " + selected_shell_inside_dia);
+    res.push(nuc);
+    let hoc = nuc * (kc / equivalent_diameter);
+    res.push(hoc);
+    // console.log("nuc: " + nuc + ", kc: " + kc + ", equivalent_diameter: " + equivalent_diameter);
+    let hoic = hoc * (selected_outside_dia / selected_dia);
+    res.push(hoic);
     console.log(res);
     a7_second_calculation_set = res;
     return res;

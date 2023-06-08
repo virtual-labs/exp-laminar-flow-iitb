@@ -43,6 +43,9 @@ function activity4() {
     document.getElementById("root").appendChild(canvas);
     canvas.style.cursor = "crosshair";
     context = canvas.getContext("2d");
+    if (document.getElementById('screen-button')) {
+        document.getElementById('screen-button').remove();
+    }
     rect = canvas.getBoundingClientRect();
     // scene= new Scene();
     // scene1= new Scene();
@@ -340,7 +343,7 @@ function fixed_container1() {
     c6.name = "Heater";
     scene1.add(c6);
     let c7 = new Chemistry.Geometry();
-    c7.stpt = new Chemistry.Point(674, 231);
+    c7.stpt = new Chemistry.Point(655, 231);
     c7.name = "Temp_con";
     scene1.add(c7);
     let c8 = new Chemistry.Geometry();
@@ -352,11 +355,11 @@ function fixed_container1() {
     c9.name = "Temp_out_cold";
     scene1.add(c9);
     let c10 = new Chemistry.Geometry();
-    c10.stpt = new Chemistry.Point(235, 246);
+    c10.stpt = new Chemistry.Point(240, 240);
     c10.name = "Temp_in_hot";
     scene1.add(c10);
     let c11 = new Chemistry.Geometry();
-    c11.stpt = new Chemistry.Point(235, 606);
+    c11.stpt = new Chemistry.Point(240, 613);
     c11.name = "Temp_out_hot";
     scene1.add(c11);
 }
