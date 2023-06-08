@@ -8,6 +8,7 @@ var Ti;
 var To;
 var temp_diff_1 = 0;
 var temp_diff_2 = 0;
+var control_panel_text;
 // var ti: number;
 // var to: number;
 function new_task_6(text) {
@@ -33,6 +34,7 @@ function activity6() {
     Ti = 28.2 - 53 / 181.0;
     seq = 0;
     seq_container = [];
+    control_panel_text = new Chemistry.Text("Control Panel", new Chemistry.Point(850, 790), canvas);
     let v1 = new Chemistry.Custome_image(red_valve, new Chemistry.Point(400, 410), 66, 19, canvas);
     v1.stang = -90;
     let v2 = new Chemistry.Custome_image(red_valve, new Chemistry.Point(605, 520), 66, 18, canvas);
@@ -90,6 +92,7 @@ function a6_canvas_mapping() {
 }
 function draw_seq_all() {
     scene.draw();
+    control_panel_text.draw();
     draw_pump_con();
     all_valves[0].draw();
     all_valves[1].draw();
@@ -191,7 +194,7 @@ function draw_seq_all() {
             // a6_text.font = "24px";
             // a6_text.draw();
             //document.getElementById("a6-question-div-box").innerText = "Turn on the Heater";
-            add_to_content("Turn on the Heater");
+            add_to_content("Click on the 'h' button on control pannel to turn on the Heater");
             // second_geo.draw();
         }
     }
@@ -249,7 +252,7 @@ function a6_mouseclick_seq_2(e) {
             canvas.removeEventListener("click", a6_mouseclick_seq_2);
             console.log("Open hot fluid pump outlet valve");
             //document.getElementById("a6-question-div-box").innerText = "Open hot fluid pump valve";
-            add_to_content("Open hot fluid pump valve");
+            add_to_content("Click on 'p' button on control panel to turn on the pump");
             //canvas.addEventListener("click",a6_mouseclick_seq_3);
             //add rotation of glass section valve open green color
             //all_valves[1].img="green color" change stpt angle
@@ -327,7 +330,7 @@ function a6_mouseclick_seq_7(e) {
             // a6_text.font = "24px";
             // a6_text.draw();
             // document.getElementById("a6-question-div-box").innerText = "Click Buttons on Temp Controller to select a Temperature";
-            add_to_content("Click Buttons on Temp Controller to select a Temperature");
+            add_to_content("Click on up and down arrow on temp controller to select the temperature");
         }
     }
     // a6_check_isinside_cold_in(x,y);
@@ -336,8 +339,8 @@ function a6_mouseclick_seq_8(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 385 && y <= 422) {
-        if (x >= 697 && x <= 763) {
+    if (y >= 408 && y <= 440) {
+        if (x >= 700 && x <= 780) {
             new_task_6("");
             //get temp text
             seq = 9;
@@ -363,6 +366,7 @@ function a6_mouseclick_seq_8(e) {
             seq_container.push(second_geo);
             second_geo.name = "temp_con";
             draw_seq_all();
+            add_to_content("Click on start button to Start the timer");
         }
     }
     // a6_check_isinside_cold_in(x,y);
@@ -371,8 +375,8 @@ function a6_mouseclick_seq_9(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 330 && y <= 356) {
-        if (x >= 697 && x <= 763) {
+    if (y >= 335 && y <= 380) {
+        if (x >= 700 && x <= 780) {
             new_task_6("");
             //get temp text
             seq = 9;
@@ -403,6 +407,7 @@ function a6_mouseclick_seq_9(e) {
             second_geo.name = "temp_con";
             draw_seq_all();
         }
+        add_to_content("Click on start button to Start the timer");
     }
     // a6_check_isinside_cold_in(x,y);
 }
@@ -411,8 +416,8 @@ function a6_mouseclick_timer_start(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 209 && y <= 268) {
-        if (x >= 874 && x <= 925) {
+    if (y >= 240 && y <= 290) {
+        if (x >= 900 && x <= 970) {
             //get temp text
             if (index_temp_con >= 0) {
                 seq = 10;
@@ -513,8 +518,8 @@ function a6_mouseclick_timer_stop(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 207 && y <= 274) {
-        if (x >= 1060 && x <= 1120) {
+    if (y >= 240 && y <= 290) {
+        if (x >= 1080 && x <= 1160) {
             //get temp text
             seq = 11;
             timer_anim = false;
@@ -527,7 +532,7 @@ function a6_mouseclick_timer_reset(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 207 && y <= 273) {
+    if (y >= 240 && y <= 290) {
         if (x >= 970 && x <= 1015) {
             //get temp text
             seq = 12;
@@ -544,7 +549,7 @@ function a6_mouseclick_timer_reset(e) {
             // a6_text.font = "24px";
             // a6_text.draw();
             //   document.getElementById("a6-question-div-box").innerText = "Close outlet gas valve and start timer";
-            add_to_content("Close outlet gas valve and start timer");
+            add_to_content("Close outlet glass valve and start timer");
         }
     }
 }
@@ -552,7 +557,7 @@ function a6_mouseclick_seq_12(e) {
     let x = Math.round((e.clientX - rect.x) / lscale);
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     console.log(x, y);
-    if (y >= 500 && y <= 520) {
+    if (y >= 477 && y <= 550) {
         if (x >= 593 && x <= 660) {
             seq = 13;
             canvas.removeEventListener("click", a6_mouseclick_seq_12);
@@ -645,21 +650,21 @@ function table_0_draw() {
     root.style.width = "68%";
     root.style.height = "97%";
     let table = document.createElement('table');
-    table.setAttribute('class', 'table');
+    table.setAttribute('class', 'table table-bordered');
     table.innerHTML = `
-    <thead class="table-primary" style="font-size: 1.4vw;">
-        <tr>
-            <th>Sr. No</th>
-            <th>Time Between Two Marks</th>
-            <th>Ti</th>
-            <th>To</th>
-            <th>ti</th>
-            <th>to</th>
-            <th>Check</th>
+    <thead class="table-dark" style="font-size: 1.4vw;">
+        <tr scope="col" style="background-color: black !important;">
+            <th scope="col" >Sr. No</th>
+            <th scope="col" >Time Between Two Marks</th>
+            <th scope="col" >Ti</th>
+            <th scope="col" >To</th>
+            <th scope="col" >ti</th>
+            <th scope="col" >to</th>
+            <th scope="col" >Check</th>
         </tr>
     </thead>
 
-    <tbody id="tb-0" class="table-warning" style="font-size: 1.4vw;">
+    <tbody id="tb-0" style="font-size: 1.4vw;" class="table-dark">
    
     </tbody>
     `;
@@ -677,13 +682,13 @@ function table_0_draw() {
     table.setAttribute("class", "overflow-auto");
     let row = document.createElement('tr');
     row.innerHTML = `
-    <td>1</td>
-    <td><input id="table-0-inp1" type="text"></td>
-    <td><input id="table-0-inp2" type="text"></td>
-    <td><input id="table-0-inp3" type="text"></td>
-    <td><input id="table-0-inp4" type="text"></td>
-    <td><input id="table-0-inp5" type="text"></td>
-    <td><button style="font-size: 1.3vw;" class="btn btn-info" id="table-0-verify">verify</button></td>
+    <td style="border: 1px solid black !important;" scope="row">1</td>
+    <td style="border: 1px solid black !important;" scope="row"><input id="table-0-inp1" type="text"></td>
+    <td style="border: 1px solid black !important;" scope="row"><input id="table-0-inp2" type="text"></td>
+    <td style="border: 1px solid black !important;" scope="row"><input id="table-0-inp3" type="text"></td>
+    <td style="border: 1px solid black !important;" scope="row"><input id="table-0-inp4" type="text"></td>
+    <td style="border: 1px solid black !important;" scope="row"><input id="table-0-inp5" type="text"></td>
+    <td style="border: 1px solid black !important;" scope="row"><button style="font-size: 1.3vw;" class="btn btn-info" id="table-0-verify">verify</button></td>
     `;
     document.getElementById("tb-0").appendChild(row);
     let inp1 = document.getElementById("table-0-inp1");
@@ -757,20 +762,27 @@ function fill_table(index) {
         let row = document.createElement("tr");
         let td_0 = document.createElement('td');
         td_0.innerText = `${i + 1}`;
+        td_0.style.border = "1px solid black";
         // adding standard deviation
-        readings[index].reading[i][0] = parseFloat(((readings[index].reading[i][0] + random(-2, 2) / 100 * readings[index].reading[i][0])).toFixed(2));
+        readings[index].reading[i][0] = parseFloat(((readings[index].reading[i][0] + random(-1, 1) / 100 * readings[index].reading[i][0])).toFixed(2));
         let td_1 = document.createElement('td');
         td_1.innerText = `${readings[index].reading[i][0]}`;
+        td_1.style.border = "1px solid black";
         let td_2 = document.createElement('td');
         td_2.innerText = `${readings[index].reading[i][1]}`;
+        td_2.style.border = "1px solid black";
         let td_3 = document.createElement('td');
         td_3.innerText = `${readings[index].reading[i][2]}`;
+        td_3.style.border = "1px solid black";
         let td_4 = document.createElement('td');
         td_4.innerText = `${readings[index].reading[i][3]}`;
+        td_4.style.border = "1px solid black";
         let td_5 = document.createElement('td');
         td_5.innerText = `${readings[index].reading[i][4]}`;
+        td_5.style.border = "1px solid black";
         let td_6 = document.createElement('td');
         td_6.innerText = `Checked`;
+        td_6.style.border = "1px solid black";
         row.append(td_0, td_1, td_2, td_3, td_4, td_5, td_6);
         tbody.appendChild(row);
         row.setAttribute("class", "table-light");

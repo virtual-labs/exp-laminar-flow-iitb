@@ -1,7 +1,7 @@
 var actvity5_sel_data_ind = 0;
 var selected_dia = 0.7;
-var selected_outside_dia = 1.8;
-var selected_shell_inside_dia = 1;
+var selected_outside_dia = 1;
+var selected_shell_inside_dia = 1.8;
 var selected_length = 100;
 var selected_volume = 880;
 var selected_flow_rate = 500;
@@ -214,25 +214,25 @@ function a5_move_to_calculation() {
     document.getElementById("description-box").innerText = `Calculation of the area based on the selected dimensions`;
     add_to_content(`
     <p class="a5-calculations">
-    <span class="text-color-blue">A</span> = &pi; x (d1(m)) x 1
+    <span class="text-color-blue">A</span> = &pi; x d1 x L
     </p>
 
     
     
     <p class="a5-calculations">
-    <span class="text-color-blue">S</span> = (&pi;/4) x (d1(m))2
+    <span class="text-color-blue">S</span> = (&pi;/4) x d1<sup>2</sup>
     </p>
 
    
 
     <p class="a5-calculations">
-    <span class="text-color-blue">De</span> = (1.8 x 10-2)-(1 x 10-2)
+    <span class="text-color-blue">De</span> = D1 - d2
     </p>
 
     
 
     <p class="a5-calculations">
-    <span class="text-color-blue">Sa</span> = (&pi;/4) x (0.7 x 10-2)^2 
+    <span class="text-color-blue">Sa</span> = (&pi;/4) x (D1<sup>2</sup>  - d2<sup>2</sup>)
     </p>
 
     <p class="a5-calculations">Realative error in each value should be less than <span class="text-color-blue">4%</span></p>
@@ -318,7 +318,7 @@ function a5_move_to_calculation() {
 
                             <div class="s5-area-text">
                                 <span style="font-weight: 700;">A</span> (Inside Heat transfer area of the heat
-                                exchanger (cm2) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-3</sup></span>
+                                exchanger (m<sup>2</sup>) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-3</sup></span>
                             </div>
 
                             <div>
@@ -331,7 +331,7 @@ function a5_move_to_calculation() {
 
                             <div class="s5-area-text"> 
                                 <span style="font-weight: 700;">S</span> (Cross-sectional area of inner tube
-                                (cm2) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-6</sup></span>
+                                (m<sup>2</sup>) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-6</sup></span>
                             </div>
 
                             <div>
@@ -349,13 +349,13 @@ function a5_move_to_calculation() {
                         </div>
 
                         <div class="area-type" style="font-size: 1.2vw; !important">
-                            <div class="s5-area-text"><span style="font-weight: 700;">De</span> (Equivalent diameter of annulus (cm)
+                            <div class="s5-area-text"><span style="font-weight: 700;">De</span> (Equivalent diameter of annulus (m)
                                 ) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-3</sup></span> </div>
                             <div><input class="s5-area-input " type="text" name="" id="area-De"></div>
 
                         </div>
                         <div class="area-type" style="font-size: 1.2vw;">
-                            <div class="s5-area-text"><span style="font-weight: 700;">Sa</span> (Cross-sectional area of annulus(cm2) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-6</sup></span>
+                            <div class="s5-area-text"><span style="font-weight: 700;">Sa</span> (Cross-sectional area of annulus(m<sup>2</sup>) x <span style="font-weight: 600;" class="text-color-blue">10<sup>-6</sup></span>
                             </div>
                             <div><input class="s5-area-input" type="text" name="" id="area-Sa"></div>
 

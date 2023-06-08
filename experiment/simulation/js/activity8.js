@@ -56,7 +56,7 @@ function activity8() {
             let row = document.createElement("tr");
             row.innerHTML = `
             <td>${table_3_ind++}</td>
-            <td class="y-axis">${main_table[i][2] * 1000}</td>
+            <td class="y-axis">${(main_table[i][2] * 1000).toFixed(2)}</td>
             <td class="x-exp">${last_table[i][0].toFixed(2)}</td>
             <td class="x-theo">${last_table[i][2].toFixed(2)}</td>
             `;

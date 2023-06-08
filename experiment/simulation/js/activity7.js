@@ -40,15 +40,15 @@ function activity7() {
     //a7_form_one.id = "a7-left-box";
     a7_form_one.innerHTML = `
     <div style="width: 100%; font-weight: 700;">
-    <h5 style="text-align: center">Physical Properties at Mean Temperature</h5>
+    <h3 style="text-align: center">Physical Properties at Mean Temperature</h3>
 </div>
 
 
 
-    <table class="table table-responsive">
-        <thead class="table-light align-middle" style="font-size: 1.3vw">
+    <table class="table table-responsive table-bordered">
+        <thead class="table-dark align-middle" style="font-size: 1.3vw">
             <tr >
-                <th></th>
+                <th>Properties</th>
                 <th class="text-center" id="a7-table1-hot-header">Hot Fluid</th>
                 <th id="a7-table1-cold-header">Cold Fluid</th>
             </tr>
@@ -57,26 +57,26 @@ function activity7() {
         <tbody class="table-light align-middle" style="font-size: 1.3vw">
             <tr>
                 <td >Heat Capacity, C<sub>p</sub> (J/kg-K)</td>
-                <td><input style="width: 80%" class="form-control" type="text" id="heat-capacity-input-1"></td>
-                <td><input style="width: 80%" class="form-control" type="text" id="heat-capacity-input-2"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="heat-capacity-input-1"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="heat-capacity-input-2"></td>
             </tr>
 
             <tr>
                 <td>Density, &rho; (kg/m<sup>3</sup>)</td>
-                <td><input style="width: 80%" class="form-control" type="text" id="density-input-1"></td>
-                <td><input style="width: 80%" class="form-control" type="text" id="density-input-2"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="density-input-1"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="density-input-2"></td>
             </tr>
 
             <tr>
                 <td>Viscosity, &mu; (kg/m-s)</td>
-                <td><input style="width: 80%" class="form-control" type="text" id="viscosity-input-1"></td>
-                <td><input style="width: 80%" class="form-control" type="text" id="viscosity-input-2"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="viscosity-input-1"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="viscosity-input-2"></td>
             </tr>
 
             <tr>
                 <td>Thermal Conductivity, K (W/m-K)</td>
-                <td><input style="width: 80%" class="form-control" type="text" id="thermal-conductivity-input-1"></td>
-                <td><input style="width: 80%" class="form-control" type="text" id="thermal-conductivity-input-2"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="thermal-conductivity-input-1"></td>
+                <td><input style="width: 80%; margin: 0 10%;" class="form-control" type="text" id="thermal-conductivity-input-2"></td>
             </tr>
         </tbody>
     </table>
@@ -186,15 +186,15 @@ function a7_page_2() {
         </p>
 
         <p class="a7-calculations">
-            &nu; =(V x 10<sup>-6</sup>) / t
+            v =(V x 10<sup>-6</sup>) / t
         </p>
 
         <p class="a7-calculations">
-            &mu; =&nu; / S
+            u = v / S
         </p>
 
         <p class="a7-calculations">
-        m=$nu; x &rho; 
+        m= v x &rho;<sub>h</sub>
         </p>
 
         <p class="a7-calculations">
@@ -202,7 +202,7 @@ function a7_page_2() {
         </p>
 
         <p class="a7-calculations">
-            LMTD = ((T<sub>i</sub> - t<sub>i</sub>) - (T<sub>o</sub> - t<sub>o</sub>)) / ln((T<sub>i</sub> - t<sub>i</sub>)/)
+            LMTD = ((T<sub>i</sub> - t<sub>i</sub>) - (T<sub>o</sub> - t<sub>o</sub>)) / ln((T<sub>i</sub> - t<sub>i</sub>)/(T<sub>o</sub> - t<sub>o</sub>))
         </p>
 
         <p class="a7-calculations">
@@ -235,27 +235,27 @@ function a7_page_2() {
 
                             <tr>
                                 <td>Heat Capacity, Cp (J/kg-K)</td>
-                                <td>${cph}</td>
-                                <td>${cpc}</td>
+                                <td style="color: black !important;">${cph}</td>
+                                <td style="color: black !important;">${cpc}</td>
                             </tr>
 
                             <tr>
                                 <td>Density, ρ (kg/m3)
                                 </td>
-                                <td>${rhoh}</td>
-                                <td>${rhoc}</td>
+                                <td style="color: black !important;">${rhoh}</td>
+                                <td style="color: black !important;">${rhoc}</td>
                             </tr>
 
                             <tr>
                                 <td>Viscosity, µ (kg/m-s)</td>
-                                <td>${mueh}</td>
-                                <td>${muec}</td>
+                                <td style="color: black !important;">${mueh}</td>
+                                <td style="color: black !important;">${muec}</td>
                             </tr>
 
                             <tr>
                                 <td>Thermal Conductivity, K (W/m-K)</td>
-                                <td>${kh}</td>
-                                <td>${kc}</td>
+                                <td style="color: black !important;">${kh}</td>
+                                <td style="color: black !important;">${kc}</td>
                             </tr>
 
                         </tbody>
@@ -268,28 +268,28 @@ function a7_page_2() {
                         <tbody class="table-light align-middle"  style="font-size: 1.3vw;">
 
                             <tr>
-                                <td>Inside Heat transfer area of heat exchanger, A (m2)</td>
-                                <td style="width: 20%">${heat_transfer_area}</td>
+                                <td>Inside Heat transfer area of heat exchanger, A (m<sup>2</sup>) x 10<sup>-3</sup></td>
+                                <td style="width: 20%; color: black !important;">${(heat_transfer_area * 1000).toFixed(0)}</td>
                             </tr>
 
                             <tr>
-                                <td>Cross-sectional area of inner tube, S (m2)</td>
-                                <td>${area_of_inner_tube}</td>
+                                <td>Cross-sectional area of inner tube, S (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                                <td style="color: black !important;">${(area_of_inner_tube * 1000000).toFixed(0)}</td>
                             </tr>
 
                             <tr>
-                                <td>Equivalent diameter of annulus, De (m) </td>
-                                <td>${equivalent_diameter}</td>
+                                <td>Equivalent diameter of annulus, De (m) x 10<sup>-3</sup> </td>
+                                <td style="color: black !important;">${(equivalent_diameter * 1000).toFixed(0)}</td>
                             </tr>
 
                             <tr>
-                                <td>Cross-sectional area of Annulus, Sa (m2)</td>
-                                <td>${annulus_area}</td>
+                                <td>Cross-sectional area of Annulus, Sa (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                                <td style="color: black !important;">${(annulus_area * 1000000).toFixed(0)}</td>
                             </tr>
 
                             <tr>
                                 <td>Volume of the measuring tank between two marks, V (cm3)</td>
-                                <td>${selected_volume}</td>
+                                <td style="color: black !important;">${selected_volume}</td>
                             </tr>
 
                         </tbody>
@@ -311,9 +311,9 @@ function a7_page_2() {
                     <th>To (°C)</th>
                     <th>ti (°C)</th>
                     <th>to (°C)</th>
-                    <th class="hovertext" data-hover="&nu; = (V*10^(-6))/(t)">&nu; (m<sup>2</sup>/s) x 10<sup>-5</sup></th>
-                    <th class="hovertext" data-hover="u = &nu;/s">u (m/s) x 10<sup>-3</sup></th>
-                    <th class="hovertext" data-hover="m = &nu;*&rho;">m (kg/s) x 10<sup>-3</sup></th>
+                    <th class="hovertext" data-hover="v = (V*10^(-6))/(t)">&nu; (m<sup>3</sup>/s) x 10<sup>-5</sup></th>
+                    <th class="hovertext" data-hover="u = v/s">u (m/s) x 10<sup>-3</sup></th>
+                    <th class="hovertext" data-hover="m = v*&rho;">m (kg/s) x 10<sup>-3</sup></th>
                     <th class="hovertext" data-hover="Q = m*C<sub>p</sub>*(Ti - To)">Q (W)</th>
                     <th class="hovertext" data-hover="LMTD = ((Ti -ti) - (To -to))/ln((Ti -ti)/(To - to))">LMTD (K)</th>
                     <th class="hovertext" data-hover="U = Q / (A*LMTD)">U (W/m<sup>2</sup>-K)</th>
@@ -509,7 +509,11 @@ function a7_show_calculation_fields() {
     </p>
 
     <p class="a7-calculations">
-        u<sub>c</sub>=(&nu;<sub>c</sub>/ 3600000) / S<sub>a</sub>
+        v = 500 L/h
+    </p>
+
+    <p class="a7-calculations">
+        u<sub>c</sub>= (V / (3600 x 1000)) / S<sub>a</sub>
     </p>
 
     <p class="a7-calculations">
@@ -520,8 +524,22 @@ function a7_show_calculation_fields() {
        Re<sub>c</sub> = (De x u<sub>c</sub> x &rho;<sub>c</sub>) / &mu;<sub>c</sub>
     </p>
 
+
     <p class="a7-calculations">
-        Nu<sub>c</sub> = 0.023 X (Re<sub>c</sub>)<sup>0.8</sup> x (Pr<sub>c</sub>)<sup>0.4</sup> x (D / D<sub>2</sub>)<sup>0.45</sup>
+        Inside dia of outer tube D1= 1.8 cm
+    </p>
+
+    <p class="a7-calculations">
+        Outside dia of inner tube d2= 1 cm
+    </p>
+
+    <p class="a7-calculations">
+        Inside dia of inner tube d1=0.7 cm
+    </p>
+
+
+    <p class="a7-calculations">
+        Nu<sub>c</sub> = 0.023 X (Re<sub>c</sub>)<sup>0.8</sup> x (Pr<sub>c</sub>)<sup>0.4</sup> x (D / d<sub>2</sub>)<sup>0.45</sup>
     </p>
 
     <p class="a7-calculations">
@@ -561,27 +579,27 @@ function a7_show_calculation_fields() {
 
                    <tr>
                        <td>Heat Capacity, Cp (J/kg-K)</td>
-                       <td>${cph}</td>
-                       <td>${cpc}</td>
+                       <td style="color: black !important;">${cph}</td>
+                       <td style="color: black !important;">${cpc}</td>
                    </tr>
 
                    <tr>
                        <td>Density, ρ (kg/m3)
                        </td>
-                       <td>${rhoh}</td>
-                       <td>${rhoc}</td>
+                       <td style="color: black !important;">${rhoh}</td>
+                       <td style="color: black !important;">${rhoc}</td>
                    </tr>
 
                    <tr>
                        <td>Viscosity, µ (kg/m-s)</td>
-                       <td>${mueh}</td>
-                       <td>${muec}</td>
+                       <td style="color: black !important;">${mueh}</td>
+                       <td style="color: black !important;">${muec}</td>
                    </tr>
 
                    <tr>
                        <td>Thermal Conductivity, K (W/m-K)</td>
-                       <td>${kh}</td>
-                       <td>${kc}</td>
+                       <td style="color: black !important;">${kh}</td>
+                       <td style="color: black !important;">${kc}</td>
                    </tr>
 
                </tbody>
@@ -594,28 +612,28 @@ function a7_show_calculation_fields() {
                <tbody class="table-light align-middle" style="font-size: 1.1vw;">
 
                    <tr>
-                       <td>Inside Heat transfer area of heat exchanger, A (m2)</td>
-                       <td style="width: 20%">${heat_transfer_area}</td>
+                       <td>Inside Heat transfer area of heat exchanger, A (m<sup>2</sup>) x 10<sup>-3</sup></td>
+                       <td style="width: 20%; color: black !important;">${(heat_transfer_area * 1000).toFixed(0)}</td>
                    </tr>
 
                    <tr>
-                       <td>Cross-sectional area of inner tube, S (m2)</td>
-                       <td>${area_of_inner_tube}</td>
+                       <td>Cross-sectional area of inner tube, S (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                       <td style="color: black !important;">${(area_of_inner_tube * 1000000).toFixed(0)}</td>
                    </tr>
 
                    <tr>
-                       <td>Equivalent diameter of annulus, De (m) </td>
-                       <td>${equivalent_diameter}</td>
+                       <td>Equivalent diameter of annulus, De (m) x 10<sup>-3</sup> </td>
+                       <td style="color: black !important;">${(equivalent_diameter * 1000).toFixed(0)}</td>
                    </tr>
 
                    <tr>
-                       <td>Cross-sectional area of Annulus, Sa (m2)</td>
-                       <td>${annulus_area}</td>
-                   </tr>
+                       <td>Cross-sectional area of Annulus, Sa (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                       <td style="color: black !important;">${(annulus_area * 1000000).toFixed(0)}</td>
+                   </tr style="color: black !important;">
 
                    <tr>
                        <td>Volume of the measuring tank between two marks, V (cm3)</td>
-                       <td>${selected_volume}</td>
+                       <td style="color: black !important;">${selected_volume}</td>
                    </tr>
 
                </tbody>
@@ -664,7 +682,7 @@ function a7_show_calculation_fields() {
                        </tr>
 
                        <tr>
-                           <td class="hovertext" data-hover="">Heat Transfer Coe, h<sub>o</sub> (W/m<sup>2</td>
+                           <td class="hovertext" data-hover="">Heat Transfer Coe, h<sub>o</sub> (W/m<sup>2</sup>-K)</td>
                            <td><input class="form-control" style="width: 90%; font-size: 1.1vw" type="text" id="a7-f5">
                            </td>
                        </tr>
@@ -848,11 +866,11 @@ function show_table_2() {
             </p>
 
             <p class="a7-calculations">
-                Pr = (Cp x &mu;) / K
+                Pr = (Cp<sub>h</sub> x &mu;<sub>h</sub>) / K
             </p>
 
             <p class="a7-calculations">
-            Re<sub>c</sub> = (d<sub>1</sub> x u x &rho;) / &mu;
+            Re<sub>c</sub> = (d<sub>1</sub> x u x &rho;<sub>h</sub>) / &mu;<sub>h</sub>;
             </p>
 
             <p class="a7-calculations">
@@ -890,27 +908,27 @@ function show_table_2() {
 
                     <tr>
                         <td>Heat Capacity, Cp (J/kg-K)</td>
-                        <td>${cph}</td>
-                        <td>${cpc}</td>
+                        <td style="color: black !important;">${cph}</td>
+                        <td style="color: black !important;">${cpc}</td>
                     </tr>
 
                     <tr>
                         <td>Density, ρ (kg/m3)
                         </td>
-                        <td>${rhoh}</td>
-                        <td>${rhoc}</td>
+                        <td style="color: black !important;">${rhoh}</td>
+                        <td style="color: black !important;">${rhoc}</td>
                     </tr>
 
                     <tr>
                         <td>Viscosity, µ (kg/m-s)</td>
-                        <td>${mueh}</td>
-                        <td>${muec}</td>
+                        <td style="color: black !important;">${mueh}</td>
+                        <td style="color: black !important;">${muec}</td>
                     </tr>
 
                     <tr>
                         <td>Thermal Conductivity, K (W/m-K)</td>
-                        <td>${kh}</td>
-                        <td>${kc}</td>
+                        <td style="color: black !important;">${kh}</td>
+                        <td style="color: black !important;">${kc}</td>
                     </tr>
 
                 </tbody>
@@ -923,39 +941,39 @@ function show_table_2() {
                 <tbody class="table-light align-middle"  style="font-size: 1.2vw;">
 
                     <tr>
-                        <td>Inside Heat transfer area of heat exchanger, A (m2)</td>
-                        <td style="width: 20%">${heat_transfer_area}</td>
+                        <td>Inside Heat transfer area of heat exchanger, A (m<sup>2</sup>) x 10<sup>-3</sup></td>
+                        <td style="width: 20%; color: black !important;">${(heat_transfer_area * 1000).toFixed(0)}</td>
                     </tr>
 
                     <tr>
-                        <td>Cross-sectional area of inner tube, S (m2)</td>
-                        <td>${area_of_inner_tube}</td>
+                        <td>Cross-sectional area of inner tube, S (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                        <td style="color: black !important;">${(area_of_inner_tube * 1000000).toFixed(0)}</td>
                     </tr>
 
                     <tr>
-                        <td>Equivalent diameter of annulus, De (m) </td>
-                        <td>${equivalent_diameter}</td>
+                        <td>Equivalent diameter of annulus, De (m) x 10<sup>-3</sup> </td>
+                        <td style="color: black !important;">${(equivalent_diameter * 1000).toFixed(0)}</td>
                     </tr>
 
                     <tr>
-                        <td>Cross-sectional area of Annulus, Sa (m2)</td>
-                        <td>${annulus_area}</td>
+                        <td>Cross-sectional area of Annulus, Sa (m<sup>2</sup>) x 10<sup>-6</sup></td>
+                        <td style="color: black !important;">${(annulus_area * 1000000).toFixed(0)}</td>
                     </tr>
 
                     <tr>
                         <td>Volume of the measuring tank between two marks, V (cm3)</td>
-                        <td>${selected_volume}</td>
+                        <td style="color: black !important;">${selected_volume}</td>
                     </tr>
 
                     <tr>
                         <td>Ht. Transfer Coe., based on inner tube, hoi (W/m2-K)</td>
-                        <td>${a7_second_calculation_set[5]}</td>
+                        <td style="color: black !important;">${a7_second_calculation_set[5].toFixed(3)}</td>
                      </tr>
 
 
                     <tr>
                         <td>Prandtl Number, Prh</td>
-                        <td>5.7</td>
+                        <td style="color: black !important;">5.7</td>
                     </tr>
 
                 </tbody>
