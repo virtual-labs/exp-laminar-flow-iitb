@@ -58,6 +58,7 @@ function activity6() {
     first_geo.draw();
     draw_seq_all();
     draw_pump_con();
+    // canvas.addEventListener('click', print_coordinates);
 }
 function draw_pump_con() {
     pupm_con.draw();
@@ -207,11 +208,27 @@ function draw_seq_all() {
     else if (seq == 13) {
         seq_container[2].draw();
         console.log("glass fill animation completed");
+        add_to_content('Now open the outlet valve.');
+        canvas.addEventListener('click', open_valve_last);
         // let a6_text = new Chemistry.Text("Observation Table", new Chemistry.Point(1125, 600), canvas);
         // a6_text.color = "yellow";
         // a6_text.font = "24px";
         // a6_text.draw();
         // document.getElementById("a6-question-div-box").innerText = "See Table for 8 different flow rates";
+        //    add_to_content("Note down all the readings, You require to fill the table in the next activity");
+        //    canvas.addEventListener('click', open_valve_last);
+        //     show_table_0 = true;
+        //     if(t0) {    
+        //         t0 = false;
+        //     }
+        //     if(!document.getElementById("table-btn")) {
+        //         add_button(`<button style="margin-bottom: 5%; font-size: 1.3vw;" id="table-btn" class="btn btn-primary" onclick="table_0_draw();">Next</button>`);
+        //     }
+    }
+    else if (seq == 14 && seq_container[seq_container.length - 1].l < seq_container[seq_container.length - 1].l_last) {
+        window.requestAnimationFrame(draw_seq_all);
+    }
+    else if (seq == 14) {
         add_to_content("Note down all the readings, You require to fill the table in the next activity");
         show_table_0 = true;
         if (t0) {
@@ -222,6 +239,34 @@ function draw_seq_all() {
         }
     }
     //add all valve draw
+}
+function print_coordinates(e) {
+    let x = Math.round((e.clientX - rect.x) / lscale);
+    let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
+    console.log(x, y);
+}
+function open_valve_last(e) {
+    let x = Math.round((e.clientX - rect.x) / lscale);
+    let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
+    console.log("last event detected");
+    if (y >= 460 && y <= 547) {
+        if (x >= 598 && x <= 681) {
+            console.log("last event triggered");
+            var second_geo1 = new Chemistry.anim_image_y_dir_down(seq4_img, new Chemistry.Point(470, 440), 709, 650, canvas);
+            //for turning valve
+            all_valves[1].img = green_valve;
+            all_valves[1].stang = 45;
+            all_valves[1].stpt.y = 510;
+            seq_container.push(second_geo1);
+            second_geo1.name = "last";
+            second_geo1.startx = 400;
+            second_geo1.l = 80;
+            second_geo1.l_last = 500;
+            second_geo1.width = 0;
+            seq = 14;
+            draw_seq_all();
+        }
+    }
 }
 var readingtime = 0;
 function getreadingtime() {
@@ -801,4 +846,5 @@ function set_global_temp_ind(temp_value) {
     }
     console.log("index set to " + selected_ind);
 }
+//activity6();
 //# sourceMappingURL=activity6.js.map

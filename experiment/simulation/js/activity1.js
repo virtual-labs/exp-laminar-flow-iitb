@@ -11,43 +11,49 @@ var total_score = 0;
 var current_score = 3;
 var global_score = 0;
 var a1_panel;
-var all_text_content = document.getElementById("div");
+var all_text_content = document.getElementById('div');
 var canvas_box_scale = 1;
 var highlighted_images = [];
 var a1_labels = [];
 var a1_scene;
 var a1_index = [];
-var start_button = document.createElement("input");
-start_button.type = "button";
+var start_button = (document.createElement('input'));
+start_button.type = 'button';
 start_button.onclick = activity1;
-document.getElementById("root").appendChild(start_button);
-start_button.style.position = "absolute";
+document.getElementById('root').appendChild(start_button);
+start_button.style.position = 'absolute';
 start_button.style.left = `${window.innerWidth / 2}px`;
 start_button.style.top = `${25}px`;
-start_button.value = "Start Simulation";
-start_button.className = "btn btn-primary";
+start_button.value = 'Start Simulation';
+start_button.className = 'btn btn-primary';
 var guide;
-main.style.height = "650px";
+main.style.height = '650px';
 window.addEventListener('load', () => {
-    main.style.width = (window.innerWidth * 0.97).toString() + "px";
-    main.style.height = ((parseInt(main.style.width.split("px")[0])) * (1080 / 1920) * 0.85).toString() + "px";
+    main.style.width = (window.innerWidth * 0.97).toString() + 'px';
+    main.style.height =
+        (parseInt(main.style.width.split('px')[0]) *
+            (1080 / 1920) *
+            0.85).toString() + 'px';
 });
-window.addEventListener("resize", () => {
-    main.style.width = (window.innerWidth * 0.97).toString() + "px";
-    main.style.height = ((parseInt(main.style.width.split("px")[0])) * (1080 / 1920) * 0.85).toString() + "px";
+window.addEventListener('resize', () => {
+    main.style.width = (window.innerWidth * 0.97).toString() + 'px';
+    main.style.height =
+        (parseInt(main.style.width.split('px')[0]) *
+            (1080 / 1920) *
+            0.85).toString() + 'px';
 });
 function activity1() {
-    document.getElementById("root").innerHTML = "";
-    canvas = document.createElement("canvas");
-    canvas.id = "canvas_activity1";
-    document.getElementById("root").appendChild(canvas);
-    canvas.style.cursor = "crosshair";
-    context = canvas.getContext("2d");
+    document.getElementById('root').innerHTML = '';
+    canvas = document.createElement('canvas');
+    canvas.id = 'canvas_activity1';
+    document.getElementById('root').appendChild(canvas);
+    canvas.style.cursor = 'crosshair';
+    context = canvas.getContext('2d');
     rect = canvas.getBoundingClientRect();
     scene = new Scene();
     a1_scene = new Scene();
-    panel.style.display = "flex";
-    guide = document.getElementById("guide");
+    panel.style.display = 'flex';
+    guide = document.getElementById('guide');
     window.onload = a1_windowresize;
     window.onresize = a1_windowresize;
     a1_windowresize();
@@ -57,7 +63,7 @@ function activity1() {
     // a1_load_questions();
     // a1_random_questions();
     // a1_display_current_question();
-    window.addEventListener("resize", a1_display_current_question);
+    window.addEventListener('resize', a1_display_current_question);
     add_button(`<button id='screen-button' class="btn btn-info" style="width: 100%; margin-bottom: 5%;" onclick="(() =>{
     document.getElementById('screen-button').remove();
     canvas.addEventListener('click',a1_mouseclick);
@@ -79,7 +85,7 @@ function load_a1() {
     a1_load_questions();
     a1_random_questions();
     a1_display_current_question();
-    window.addEventListener("resize", a1_display_current_question);
+    window.addEventListener('resize', a1_display_current_question);
 }
 //window.onresize = a1_windowresize;
 function a1_windowresize() {
@@ -92,7 +98,7 @@ function a1_windowresize() {
     // a1_panel.style.right = `${rect.x + canvas.width - 1830*lscale}px`;
     // a1_panel.style.top = `${rect.y + 10}px`;
     // a1_panel.style.height = `${canvas.height - 20}px`;
-    panel.style.height = canvas.height * (1 - 0.04) + "px";
+    panel.style.height = canvas.height * (1 - 0.04) + 'px';
     // guide sizing
     //guide.style.top = `${rect.y + 5*lscale}px`;
     scene.draw();
@@ -102,9 +108,9 @@ function a1_windowresize() {
 }
 function a1_canvas_size() {
     canvas.width = window.innerWidth * 0.97;
-    canvas.height = canvas.width * 1080.0 / 1920 * 0.85;
+    canvas.height = ((canvas.width * 1080.0) / 1920) * 0.85;
     lscale = canvas.width / 1920.0;
-    main.style.height = canvas.height + "px";
+    main.style.height = canvas.height + 'px';
 }
 function a1_canvas_mapping() {
     context.translate(0, canvas.height);
@@ -117,31 +123,31 @@ function a1_mouseclick(e) {
 }
 function a1_draw_all_components() {
     var sq = new Chemistry.Custome_image(tank_img, new Chemistry.Point(530, 230), 500, 375.66, canvas);
-    sq.name = "Tank";
+    sq.name = 'Tank';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(pump_img, new Chemistry.Point(1050, 170), 350, 246.86, canvas);
-    sq.name = "Pump";
+    sq.name = 'Pump';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(test_img, new Chemistry.Point(1080, 600), 420, 550, canvas);
-    sq.name = "Test";
+    sq.name = 'Test';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(pipe_h_img, new Chemistry.Point(280, 800), 450, 80.775, canvas);
-    sq.name = "Hpipe";
+    sq.name = 'Hpipe';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(pipe_v_img, new Chemistry.Point(150, 220), 100, 314, canvas);
-    sq.name = "Vpipe";
+    sq.name = 'Vpipe';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(glass_img, new Chemistry.Point(230, 580), 100, 302.8, canvas);
-    sq.name = "Glass";
+    sq.name = 'Glass';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(heater_img, new Chemistry.Point(700, 450), 350, 68.6, canvas);
-    sq.name = "Heater";
+    sq.name = 'Heater';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(temp_con_img, new Chemistry.Point(700, 700), 320, 313.6, canvas);
-    sq.name = "Temp_con";
+    sq.name = 'Temp_con';
     scene.add(sq);
     var sq = new Chemistry.Custome_image(temp_cold_in_img, new Chemistry.Point(450, 550), 150, 161.25, canvas);
-    sq.name = "Temp_in_cold";
+    sq.name = 'Temp_in_cold';
     scene.add(sq);
 }
 function load_higlighted_images() {
@@ -163,32 +169,97 @@ function load_higlighted_images() {
         [correct_glass, incorrect_glass],
         [correct_heater, incorrect_heater],
         [correct_tcon, incorrect_tcon],
-        [correct_tin_cold, incorrect_tin_cold]
+        [correct_tin_cold, incorrect_tin_cold],
     ];
     a1_labels = [
-        new Chemistry.Text("Tank", new Chemistry.Point(400, 80), canvas),
-        new Chemistry.Text("Pump", new Chemistry.Point(900, 200), canvas),
-        new Chemistry.Text("Test Section", new Chemistry.Point(1100, 600), canvas),
-        new Chemistry.Text("Horizontal Pipe", new Chemistry.Point(200, 850), canvas),
-        new Chemistry.Text("Vertical Pipe", new Chemistry.Point(100, 40), canvas),
-        new Chemistry.Text("Glass Section", new Chemistry.Point(80, 500), canvas),
-        new Chemistry.Text("Heater", new Chemistry.Point(650, 490), canvas),
-        new Chemistry.Text("Temp. Controller", new Chemistry.Point(700, 850), canvas),
-        new Chemistry.Text("Temp. Indiciator", new Chemistry.Point(380, 650), canvas),
+        new Chemistry.Text('Tank', new Chemistry.Point(400, 80), canvas),
+        new Chemistry.Text('Pump', new Chemistry.Point(900, 200), canvas),
+        new Chemistry.Text('Test Section', new Chemistry.Point(1100, 600), canvas),
+        new Chemistry.Text('Horizontal Pipe', new Chemistry.Point(200, 850), canvas),
+        new Chemistry.Text('Vertical Pipe', new Chemistry.Point(100, 40), canvas),
+        new Chemistry.Text('Glass Section', new Chemistry.Point(80, 500), canvas),
+        new Chemistry.Text('Heater', new Chemistry.Point(650, 490), canvas),
+        new Chemistry.Text('Temp. Controller', new Chemistry.Point(700, 850), canvas),
+        new Chemistry.Text('Temp. Indiciator', new Chemistry.Point(380, 650), canvas),
     ];
 }
 function a1_load_questions() { }
 {
     question = [];
-    question.push({ srno: 1, question: "Select <span style='color: #018fc3'>Pump</span>", ans: "Pump", hint: ["Has Suction and Discharge", "Has valve attached", "Triangular Base"] });
-    question.push({ srno: 2, question: "Select <span style='color: #018fc3'> Tank </span>", ans: "Tank", hint: ["Rectangular", "Mounted Vertically", "Has valves attached"] });
-    question.push({ srno: 3, question: "Select <span style='color: #018fc3'> Glass Section </span>", ans: "Glass", hint: ["Rectangular", "Mounted Vertically", "Has valves attached"] });
-    question.push({ srno: 4, question: "Select <span style='color: #018fc3'>Test Section</span>", ans: "Test", hint: ["Double Pipe", "pipe inside a pipe", "Has two inlets and outlets"] });
-    question.push({ srno: 5, question: "Select <span style='color: #018fc3'>Heater </span>", ans: "Heater", hint: ["U-Shape", "Mounted horizontally", "Has two pins"] });
-    question.push({ srno: 6, question: "Select <span style='color: #018fc3'> Temperature Controller </span>", ans: "Temp_con", hint: ["Rectangular box with sensor", "Display SET T", "Has two wires protruding down"] });
-    question.push({ srno: 7, question: "Select <span style='color: #018fc3'> Temperature Indicator </span>", ans: "Temp_in_cold", hint: ["Rectnagular box with sensor", "Horizontal", ""] });
-    question.push({ srno: 8, question: "Select <span style='color: #018fc3'> Verticle Pipe </span>", ans: "Vpipe", hint: ["Mounted Vertically", "Mounted Vertically", "Mounted Vertically"] });
-    question.push({ srno: 9, question: "Select <span style='color: #018fc3'> Horizontal Pipe </span>", ans: "Hpipe", hint: ["Mounted Horizontally", "Mounted Horizontally", "Mounted Horizontally"] });
+    question.push({
+        srno: 1,
+        question: "Select <span style='color: #018fc3'>Pump</span>",
+        ans: 'Pump',
+        hint: [
+            'Has Suction and Discharge',
+            'Has valve attached',
+            'Triangular Base',
+        ],
+    });
+    question.push({
+        srno: 2,
+        question: "Select <span style='color: #018fc3'> Tank </span>",
+        ans: 'Tank',
+        hint: ['Rectangular', 'Mounted Vertically', 'Has valves attached'],
+    });
+    question.push({
+        srno: 3,
+        question: "Select <span style='color: #018fc3'> Glass Section </span>",
+        ans: 'Glass',
+        hint: ['Rectangular', 'Mounted Vertically', 'Has valves attached'],
+    });
+    question.push({
+        srno: 4,
+        question: "Select <span style='color: #018fc3'>Test Section</span>",
+        ans: 'Test',
+        hint: [
+            'Double Pipe',
+            'pipe inside a pipe',
+            'Has two inlets and outlets',
+        ],
+    });
+    question.push({
+        srno: 5,
+        question: "Select <span style='color: #018fc3'>Heater </span>",
+        ans: 'Heater',
+        hint: ['U-Shape', 'Mounted horizontally', 'Has two pins'],
+    });
+    question.push({
+        srno: 6,
+        question: "Select <span style='color: #018fc3'> Temperature Controller </span>",
+        ans: 'Temp_con',
+        hint: [
+            'Rectangular box with sensor',
+            'Display SET T',
+            'Has two wires protruding down',
+        ],
+    });
+    question.push({
+        srno: 7,
+        question: "Select <span style='color: #018fc3'> Temperature Indicator </span>",
+        ans: 'Temp_in_cold',
+        hint: ['Rectnagular box with sensor', 'Horizontal', ''],
+    });
+    question.push({
+        srno: 8,
+        question: "Select <span style='color: #018fc3'> Verticle Pipe </span>",
+        ans: 'Vpipe',
+        hint: [
+            'Mounted Vertically',
+            'Mounted Vertically',
+            'Mounted Vertically',
+        ],
+    });
+    question.push({
+        srno: 9,
+        question: "Select <span style='color: #018fc3'> Horizontal Pipe </span>",
+        ans: 'Hpipe',
+        hint: [
+            'Mounted Horizontally',
+            'Mounted Horizontally',
+            'Mounted Horizontally',
+        ],
+    });
 }
 function a1_random_questions() {
     arrayofrandquestion = [];
@@ -220,7 +291,7 @@ var display_score;
 var timer1;
 var current_index;
 function a1_display_current_question() {
-    document.getElementById("score-div-box").innerText = total_score.toString();
+    document.getElementById('score-div-box').innerText = total_score.toString();
     for (let i = 0; i < question.length; i++) {
         if (arrayofrandquestion[current_question - 1] == question[i].srno) {
             text = question[i].question;
@@ -234,10 +305,10 @@ function a1_display_current_question() {
         a1_labels[a1_index[j]].draw();
     }
     question_text = new Chemistry.Text(text, new Chemistry.Point(1100, 520), canvas);
-    question_text.color = "white";
+    question_text.color = 'white';
     // question_text.draw();
     display_score = new Chemistry.Text(`Score: ${total_score}/27`, new Chemistry.Point(1650, 620), canvas);
-    display_score.color = "yellow";
+    display_score.color = 'yellow';
     // display_score.draw();
     // display question and score on panel
     //document.getElementById("a1-question-div-box").innerText = text;
@@ -278,9 +349,9 @@ function a1_check_isinside(x, y) {
         }
     }
     if (found == 1) {
-        display_result = new Chemistry.Text("Bingo! it is correct", new Chemistry.Point(1100, 450), canvas);
-        display_result.color = "yellow";
-        display_result.font = "24px";
+        display_result = new Chemistry.Text('Bingo! it is correct', new Chemistry.Point(1100, 450), canvas);
+        display_result.color = 'yellow';
+        display_result.font = '24px';
         //display_result.draw();
         if (current_question <= question.length) {
             current_question++;
@@ -301,7 +372,7 @@ function a1_check_isinside(x, y) {
     else if (found == 2) {
         console.log(current_hint);
         //display_result=new Chemistry.Text("Try again. Hint:"+question[current_index].hint[current_hint-1],new Chemistry.Point(1100,450),canvas);
-        document.getElementById("question-div-box").innerHTML = `
+        document.getElementById('question-div-box').innerHTML = `
         <div class='text-color-purple'>Thats not a ${ans}</div>
         <div>Try Again!!</div>
         <div>Hint: <span class="text-color-blue">${question[current_index].hint[current_hint - 1]}</span></div>
@@ -311,8 +382,8 @@ function a1_check_isinside(x, y) {
             current_score = 3 - current_hint;
             current_hint++;
         }
-        display_result.color = "white";
-        display_result.font = "15px";
+        display_result.color = 'white';
+        display_result.font = '15px';
         //display_result.draw();
         timer1 = setTimeout(a1_change_question, 2000);
     }
@@ -323,7 +394,8 @@ function a1_change_question() {
         for (let j = 0; j < a1_index.length; j++) {
             a1_labels[a1_index[j]].draw();
         }
-        document.getElementById("score-div-box").innerText = total_score.toString();
+        document.getElementById('score-div-box').innerText =
+            total_score.toString();
         // question_text=new Chemistry.Text("Activity 1 Completed",new Chemistry.Point(1100,520),canvas);
         // question_text.color="White";
         // question_text.draw();
@@ -331,13 +403,13 @@ function a1_change_question() {
         // display_result.color="Green";
         // display_result.draw();
         global_score = total_score;
-        const act2 = document.createElement("input");
-        act2.type = "button";
+        const act2 = (document.createElement('input'));
+        act2.type = 'button';
         act2.onclick = activity2;
         //document.getElementById("root").appendChild(act2);
-        act2.value = "Next";
-        act2.className = "btn btn-success";
-        act2.style.fontSize = "1.0vw";
+        act2.value = 'Next';
+        act2.className = 'btn btn-success';
+        act2.style.fontSize = '1.0vw';
         // guide.value  = "Click Next Button";
         //document.getElementById("question-div-box").innerText = "";
         add_button(`<button id='screen-button' class="btn btn-info" style="width: 100%; margin-bottom: 5%;" onclick="(() =>{
@@ -345,7 +417,7 @@ function a1_change_question() {
             canvas.removeEventListener('click',a1_mouseclick);
             activity2();})();">Next</button>`);
         //document.getElementById("question-div-box").appendChild(act2);
-        window.removeEventListener("resize", a1_display_current_question);
+        window.removeEventListener('resize', a1_display_current_question);
         //clearInterval(timer1);
     }
     else {
@@ -362,16 +434,16 @@ function display_message(text) {
     guide.disabled = true;
 }
 function add_to_content(text) {
-    let div = document.getElementById("question-div-box");
+    let div = document.getElementById('question-div-box');
     div.innerHTML = text;
 }
 function disable_score() {
-    let div = document.getElementById("ts");
-    div.style.display = "none";
+    let div = document.getElementById('ts');
+    div.style.display = 'none';
 }
 function add_button(text) {
     //let div = document.createElement('button');
-    let div1 = document.getElementById("panel-bottom");
+    let div1 = document.getElementById('panel-bottom');
     let temp = div1.innerHTML;
     div1.innerHTML = text;
     div1.innerHTML += temp;
