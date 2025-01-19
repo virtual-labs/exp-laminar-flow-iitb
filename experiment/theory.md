@@ -71,3 +71,4 @@ $$
 <p>
    Thus, the graph of 1/U<sub>i</sub> vs 1/U<sup>1/3</sup> (which is known as Wilson plot) should be a straight line with a slope equal to constant-1 and intercept equal to constant-2. From this graph, inside film heat transfer coefficient can be calculated which can be used to verify Sieder-Tate equation.
 </p>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
