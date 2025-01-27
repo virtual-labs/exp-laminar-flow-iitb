@@ -6,4 +6,4 @@
 ### Developers
 | SNo. | Name | Email | Institute | ID |
 | :---: | :---: | :---: | :---: | :---: |
-| 1 |  | email |  | id |
+| 1 | Nitiin Bhate | email |  | id |
