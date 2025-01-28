@@ -1,0 +1,47 @@
+[
+   {
+      "question": "Which of the following is more correct for turbulent flow?",
+      "qid": 1,
+      "option_a": "Sulfuric acid",
+      "option_b": "Caustic lye",
+      "option_c": "Glycerin",
+      "option_d": "Water",
+      "correct_option": "d"
+   },
+   {
+      "question": "Which of the following is more correct for Laminar flow?",
+      "qid": 2,
+      "option_a": "Honey",
+      "option_b": "Molten plastic",
+      "option_c": "Only (a)",
+      "option_d": "Both (a) and (b)",
+      "correct_option": "d"
+   },
+   {
+      "question": "Which of the following holds for turbulent flow?",
+      "qid": 3,
+      "option_a": "Re > 4000",
+      "option_b": "Re < 4000",
+      "option_c": "Re < 2100",
+      "option_d": "2100 < Re < 4000",
+      "correct_option": "a"
+   },
+   {
+      "question": "The Reynolds number for oils used for lubrication is:",
+      "qid": 4,
+      "option_a": "High",
+      "option_b": "Low",
+      "option_c": "Very high",
+      "option_d": "None of these",
+      "correct_option": "b"
+   },
+   {
+      "question": "Which of the following is most viscous?",
+      "qid": 5,
+      "option_a": "Castor oil",
+      "option_b": "Water",
+      "option_c": "Acetic acid",
+      "option_d": "Liquid detergent",
+      "correct_option": "a"
+   }
+]
