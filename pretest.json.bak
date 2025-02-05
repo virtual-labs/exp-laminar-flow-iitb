@@ -1,0 +1,47 @@
+[
+   {
+      "question": "Which of these terms is associated with laminar flow?",
+      "qid": 1,
+      "option_a": "Eddies",
+      "option_b": "Stream lines",
+      "option_c": "Streak lines",
+      "option_d": "Contours",
+      "correct_option": "b"
+   },
+   {
+      "question": "Which of the following is more correct for turbulent flow?",
+      "qid": 2,
+      "option_a": "Efflux time",
+      "option_b": "Reynolds number",
+      "option_c": "Entry effect",
+      "option_d": "Eddies",
+      "correct_option": "d"
+   },
+   {
+      "question": "Which of the following is more correct for Laminar flow?",
+      "qid": 3,
+      "option_a": "Parabolic profile",
+      "option_b": "Stokes law",
+      "option_c": "Boundary layer",
+      "option_d": "Efflux time",
+      "correct_option": "a"
+   },
+   {
+      "question": "Which of the following is more appropriate for Reynolds experiment?",
+      "qid": 4,
+      "option_a": "Radial dispersion",
+      "option_b": "Dye",
+      "option_c": "Axial dispersion",
+      "option_d": "Diffusion",
+      "correct_option": "c"
+   },
+   {
+      "question": "Which of the following is more appropriate for Turbulent flow?",
+      "qid": 5,
+      "option_a": "Hagen-Poiseuille",
+      "option_b": "Fanning",
+      "option_c": "Darcy",
+      "option_d": "Both b & c",
+      "correct_option": "d"
+   }
+]

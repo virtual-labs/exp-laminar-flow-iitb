@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <script src="./js/all_image_load.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+    <style>
+        #main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white !important;
+  margin: auto;
+}
+
+        #root {
+        border-radius: 7px;
+        }
+
+        #panel {
+        position: absolute;
+        right: 2.5%;
+        top: 0.75%;
+        padding: 2% 5px; 
+        background-color: white; 
+        display: none; 
+        border: 4px solid grey; 
+        border-radius: 10px; 
+        width: 28%;
+        flex-direction: column; 
+        justify-content: space-between;
+        }
+
+        #x-panel {
+        position: absolute;
+        right: 2.5%;
+        top: 30vw !important;
+        padding: 2% 5px; 
+        background-color: white; 
+        display: flex; 
+        border: 4px solid grey; 
+        border-radius: 10px; 
+        width: 96vw !important;
+        height: 15vw !important;
+        flex-direction: row; 
+        justify-content: space-between;
+        }
+
+        #all-text-content {
+        margin: 1%; 
+        padding: 2% 3%; 
+        text-align: center;
+        }
+
+        #description-box {
+        background-color: #d2e1fb; 
+        border-radius: 7px;  
+        color: black; 
+        padding: 5% 5px; 
+        font-size: 1.5vw; 
+        font-weight: 700; 
+        box-shadow: 0px 0px 10px #888888;
+        }
+
+        #des {
+        color: #018fc3; 
+        font-size: 1.6vw;
+        }
+
+        #question-div-box {
+        background-color: #f4ccccff; 
+        border-radius: 7px;  
+        color: #f9585e; 
+        font-size: 1.3vw; 
+        font-weight: 700; 
+        box-shadow: 0px 0px 8px #888888; 
+        margin: 5% 0; 
+        color: black;
+        }
+
+        #panel-bottom {
+        margin: 1%; 
+        padding: 2% 3%; 
+        text-align: center; 
+        }
+
+        #ts {
+        font-size: 1.6vw; 
+        background-color: #fff2ccff; 
+        color: #02c707; 
+        border-radius: 7px; 
+        box-shadow: 0px 0px 10px #888888; 
+        padding: 5%; 
+        color: #3c78d8;
+        }
+
+        #score-div-box {
+        color: #3c78d8; 
+        padding: 1% 0; 
+        font-size: 1.6vw;
+        }
+
+
+
+
+        #all-text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        }
+
+        .text-color-blue {
+        color: #018fc3;
+        }
+
+        .text-color-purple {
+        color: #9900ff;
+        }
+
+        #ac2-gif {
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        width: 60vw;
+        }
+
+        #comp-1 {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 23%;
+        border: 2px solid black;
+        }
+
+        #comp-2 {
+        position: absolute;
+        top: 10%;
+        left: 40%;
+        width: 23%;
+        border: 2px solid black;
+        }
+
+        #slider-1, #slider-2 {
+        display: block;
+        width: 100%;
+        height: 40px;
+        }
+
+        #comp_flow_1, #comp_flow_2 {
+        display: block;
+        width: 100%;
+        }
+
+
+        .assembly-area {
+        position: absolute;
+        top: 3%;
+        left: 10%;
+        font-size: 1.4vw;
+        padding: 5px 10%;
+        border: 2px solid black;
+        background-color: #fbd4b4;
+
+
+
+        }
+
+        .component-library {
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        font-size: 1.4vw;
+        padding: 5px 5%;
+        border: 2px solid black;
+        background-color: #fbd4b4;
+        }
+
+        #a4-btn {
+        width: 90%;
+        font-size: 1.3vw;
+        }
+
+        #a5-upper-table {
+        width: 70%;
+        }
+
+
+        .table {
+        width: 100% !important;
+        height: 100%;
+        }
+
+        #test-section-image {
+        width: 28%;
+        }
+
+        /* .test-section {
+        position: relative;
+
+        width: 100%;
+        } */
+
+        #inner-tube-label {
+        position: relative;
+        top: -25%;
+        border: 1px solid black;
+        padding: 0.25%;
+        }
+
+        #outer-tube-label {
+        position: relative;
+        top: -20%;
+        border: 1px solid black;
+        padding: 0.25%;
+        }
+
+        #a5-lower-table {
+        margin-top: 8%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+
+        #a5-table-2-box {
+        width: 60%;
+        }
+
+        #a5-table-two {
+        width: 100%;
+        }
+
+
+        #glass-section-box {
+        width: 20%;
+        }
+
+        /* #glass-section {
+        width: 100%;
+        } */
+
+
+
+
+
+        #act7 {
+        /* background-image: linear-gradient(to right, #00b4db, #0083b0); */
+        background-color: #C2CBCD;
+        color: #edede9;
+        width: 100%;
+        height: 650px;
+        }
+
+        #flex_box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        }
+
+
+        .hovertext {
+        position: relative;
+        }
+
+        .hovertext:before {
+        content: attr(data-hover);
+        visibility: hidden;
+        opacity: 0;
+        width: 140px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 0;
+        transition: opacity 1s ease-in-out;
+
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 110%;
+        }
+
+        .hovertext:hover:before {
+        opacity: 1;
+        visibility: visible;
+        }
+
+        #a1_panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        }
+
+        #a2_panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        }
+
+        #a7-left-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        }
+
+
+        #physical-properties {
+        width: 55%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        }
+
+
+
+        #physical-properties div {
+        margin-bottom: 20px;
+        padding: 8px 1%;
+        width: 100%;
+        position: relative;
+        left: 0;
+        border-radius: 8px;
+        }
+
+        /* ul {
+        border-right: 4px solid black;
+        } */
+
+        li {
+        margin-top: 0;
+        padding: 5px 2%;
+        }
+
+        #a7-right-box {
+        padding: 0 4%;
+        width: 100%;
+        position: relative;
+        bottom: 30px;
+
+        }
+
+        #areas {
+        position: relative;
+        top: 10px;
+        text-align: left;
+
+        }
+
+        #table-1 {
+
+        position: relative;
+        top: 10px;
+
+        }
+
+        @media screen and (max-width: 700px) {
+
+        #physical-properties {
+        width: 90%;
+        }
+
+        #physical-properties div {
+        width: 90%;
+        }
+        }
+
+        #act8 {
+        background-color: #C2CBCD;
+        color: #edede9;
+        width: 100%;
+        height: 650px;
+        }
+
+
+        #a8-heading {
+        background-color: #023047;
+        }
+
+        #a8-choice-box {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        }
+
+        th, td{
+
+        text-align: center;
+        }
+
+        td {
+        color: #018fc3 !important;
+        }
+
+
+        #a8-main-div {
+        height: 30vw;
+        }
+
+
+
+        tbody {
+        font-weight: 600;
+        }
+
+        td, th {
+        padding: 2px !important;
+        }
+
+        select {
+        width: 100% !important;
+        padding: 5px 10px !important;
+        }
+
+        /* .table-responsive {
+        height: 250px;
+        } */
+
+        #left_box {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        }
+
+        /* @media screen  and (max-width: 1200px) {
+
+        #left_box {
+
+        height: 45%;
+        }
+
+        .table-responsive {
+        height: 250px;
+        }
+
+
+        } */
+
+        #left_box div{
+        padding: 0 1%;
+        }
+
+
+
+
+        table {
+        color: #018fc3 !important;
+        overflow: auto !important;
+        }
+
+        #tab1-box {
+
+        margin: 0.5%;
+        height: 60% !important;
+        border: 2px solid grey;
+        border-radius: 7px;
+        }
+
+        #tab2-box {
+
+        margin: 0.5%;
+        height: 30% !important;
+        /* border: 2px solid grey;
+        border-radius: 7px; */
+        }
+
+        #a5-tab-1, #a5-tab-2 {
+        width: 100% !important;
+        height: 20vw;
+        overflow: auto;
+        }
+
+
+        #a5-tab-2 {
+        height: 8vw;
+        }
+
+        .heading-5 {
+        margin: 0.5%;
+        background-color: #cfe2f3ff;
+        text-align: center;
+        font-size: 1.5vw;
+        font-weight: 700;
+        }
+
+        .a5-upper-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+
+        #test-section-image-box {
+
+        margin: auto;
+        width: 18%;
+        }
+
+        #test-section-image {
+        width: 100%;
+        }
+
+        .a5-lower-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+
+
+        #glass-section-image-box {
+        margin: auto;
+        width: 18%;
+        }
+
+        #glass-section-image {
+        margin: auto;
+        width: 60%;
+        }
+
+        #tab-1-second-column, #tab-2-second-column {
+        width: 20%;
+        }
+
+        #area-calculation {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+
+
+        #area-1, #area-2 {
+        width: 45%;
+
+        }
+
+        .area-type {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 1px solid black;
+        padding: 0 2%;
+        }
+
+        .s5-area-input {
+        -moz-box-shadow: inset -1px -3px 5px #CCC;
+        -webkit-box-shadow: inset -3px -1px 2px #CCC;
+        box-shadow: inset -2px -2px 5px #CCC;
+        position: relative;
+        top: 10%;
+        width: 70%;
+        border:1px solid black;
+        /* border-radius: 8px; */
+        padding: 5%;
+        }
+
+        .s5-area-text {
+        width: 90%;
+        }
+
+        .s5-area-header {
+        text-align: center;
+        font-weight: 650;
+        }
+
+
+        /* activity 7 */
+
+        #a7-first-table-box {
+        height: 35vw;
+        }
+
+
+        #a7-table1-hot-header {
+        width: 20% ;
+        }
+
+        #a7-table1-cold-header {
+        width: 20%;
+        }
+
+
+        #a7-second-table-box {
+        padding-top: 3%;
+        padding-bottom: 7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        }
+
+        #a7-upper-half {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 50%;
+        }
+
+        .upper-table {
+        margin: 1%;
+        overflow: auto;
+        width: 40%;
+        }
+
+
+
+        #new-fields {
+        position: relative;
+        top: 8vw;
+        padding-left: 2%;
+        width: 80%;
+        }
+
+        #table-0-inp1, #table-0-inp2, #table-0-inp3, #table-0-inp4, #table-0-inp5 {
+        width: 100%;
+        }
+
+        #d1, #d2, #D1, #L, #V, #LH {
+        color: Black;
+        font-weight: bold;
+        }
+
+        .a5-calculations {
+        font-size: 1.3vw;
+        margin: 0;
+        }
+
+        .a7-calculations {
+        padding: 0% 2%;
+        font-size: 1.0vw;
+        margin: 0;
+        text-align: left;
+        }
+
+        .a7-add-border {
+        overflow: auto;
+        border: 4px solid #018fc3;
+        border-radius: 5px;
+        }
+
+        #new-fields {
+        width: 73.5vw;
+        }
+
+        .flow-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 2vw;
+        margin: 2% 0;
+        }
+
+        .activity2-question {
+        text-align: center;
+        font-size: 2.2vw;
+        margin: 2% 0;
+        font-weight: 600;
+        }
+
+        .activity2-options {
+        margin-left: 8%;
+        }
+
+
+
+        .activity2-options div {
+        border: 1px solid black !important;
+        width: 90%;
+        margin: 1.5% 0;
+        padding-left: 2%; 
+        padding-top: 2%;
+        padding-bottom: 2%;
+        background-color: rgb(145, 107, 215);
+        color: white;
+        font-size: 1.8vw;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <button style="display: none;" id="modal-button" type="button" class="btn btn-primary" data-target="#exampleModalCenter" data-toggle="modal">
+        Launch
+      </button>
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100vw !important;">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="padding: 0 !important; margin: 0 !important; width: 100vw !important;">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div> -->
+            <div class="modal-body" style="padding: 0; margin: 0; width: 100vw !important;">
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+
+
+   
+
+<script>
+    var structure = document.createElement('div');
+    structure.setAttribute("id", 'main');
+    structure.innerHTML = `
+
+                <h1>Hello</h1>
+            
+                <div id="root">
+                    
+                </div>
+
+                <div id="panel">
+
+                    <div id="all-text-content">
+                        
+                        <div id="description-box">
+                            Let's Identify the components required to study the <span id="des"> Heat Transfer Coefficient under Laminar Conditions</span>
+                        </div>
+            
+                        <div id="question-div-box"></div>
+                        
+                    </div>
+
+                    <div id="panel-bottom">
+                        <h3 id="ts">
+                            Score: 
+                            <span id="score-div-box">0</span>
+                        </h3>
+                    </div>
+
+                </div>
+           
+
+    `
+</script>
+
+<script>
+    function display_mode() {
+
+        if(screen.width < 750) {
+            let modal_body = document.getElementsByClassName("modal-body")[0];
+            modal_body.innerHTML = `
+            <div id="main">
+
+                <div id="root">
+                </div>
+                    
+                    
+                <div id="panel">
+
+                    <div id="all-text-content">
+                        
+                        <div id="description-box">
+                            Let's Identify the components required to study the <span id="des"> Heat Transfer Coefficient under Laminar Conditions</span>
+                        </div>
+
+                        <div id="question-div-box"></div>
+                        
+                    </div>
+
+                    <div id="panel-bottom">
+                        <h3 id="ts">
+                            Score: 
+                            <span id="score-div-box">0</span>
+                        </h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+          
+
+            `;
+            
+
+            //    $(document).ready(function() {
+            //        console.log("its ready");
+            //     $("button").click(
+            //         function() {
+            //             console.log("button clicked");
+            //     $('#exampleModalCenter').modal('show');
+            //         });
+            //    });
+
+               $(document).ready(function() {   
+                    $('#exampleModalCenter').modal('show');
+               });
+                     
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {elem.requestFullscreen()}
+            
+        } else {
+            let body = document.getElementsByTagName('body')[0];
+            body.innerHTML = `
+            <div id="main">
+
+            <div id="root">
+                <img src="" alt="">
+            </div>
+
+            <div id="panel">
+
+                <div id="all-text-content">
+                    
+                    <div id="description-box">
+                        Let's Identify the components required to study the <span id="des"> Heat Transfer Coefficient under Laminar Conditions</span>
+                    </div>
+
+                    <div id="question-div-box"></div>
+                    
+                </div>
+
+                <div id="panel-bottom">
+                    <h3 id="ts">
+                        Score: 
+                        <span id="score-div-box">0</span>
+                    </h3>
+                </div>
+
+            </div>
+
+            </div>
+            `;
+        }
+
+        // let scripts = [
+		// 		'./js/geomerty.js',
+		// 		'./js/scene.js',
+		// 		'./js/common.js',
+        //         './js/quiz_questions_answers.js',
+        //         './js/data.js',
+        //         './js/activity1.js',
+        //         './js/activity2.js',
+        //         './js/activity3.js',
+        //         './js/activity4.js',
+        //         './js/activity5.js',
+        //         './js/activity6.js',
+        //         './js/activity7.js',
+        //         './js/activity8.js',
+        //         './js/activity9.js',
+        //         './js/activity10.js'
+		// 	];
+
+        // scripts.forEach(function(url) {
+        //     let script = document.createElement('script');
+        //     script.src = url;
+        //     script.async = false;
+        //     document.body.appendChild(script);
+        // });
+    }
+
+    display_mode();
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script src="./js/geomerty.js"></script>
+<script src="./js/scene.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/quiz_questions_answers.js"></script>
+<script src="./js/data.js"></script>
+<script src="./js/activity1.js"></script>
+<script src="./js/activity2.js"></script>
+<script src="./js/activity3.js"></script>
+<script src="./js/activity4.js"></script>
+<script src="./js/activity5.js"></script>
+<script src="./js/activity6.js"></script>
+<script src="./js/activity7.js"></script>
+<script src="./js/activity8.js"></script>
+<script src="./js/activity9.js"></script>
+<script src="./js/activity10.js"></script>
+<script src="./js/last_page.js"></script>
+
+<script>
+    console.log(top);
+    console.log(self);
+
+    if(self.origin != top.origin) {
+        window.top.location.href = "https://iitb.vlabs.co.in/";
+    }
+</script>
+
+</html>
+
+
+
+
+
+
